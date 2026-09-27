@@ -1,13 +1,16 @@
 # Clínica Santa Lourdes — site
 
-Site institucional de página única. O CSS, o JavaScript e as imagens ficam
-todos dentro de `public/index.html`, então não há etapa de build.
+Site institucional de página única. O CSS e o JavaScript ficam dentro de
+`public/index.html` e as imagens em `public/fotos/` e `public/logo/`, então
+não há etapa de build.
 
 ## Estrutura
 
 | Arquivo | Função |
 | --- | --- |
 | `public/index.html` | O site |
+| `public/fotos/` | Fotos da equipe e da fachada |
+| `public/logo/` | Logos e ícone da aba do navegador |
 | `public/_headers` | Cabeçalhos de segurança (mesmo formato usado na Netlify) |
 | `wrangler.jsonc` | Configuração da Cloudflare: publica só a pasta `public/` |
 | `skills-lock.json` | Skills do Claude Code usadas no desenvolvimento (não vai para o ar) |
