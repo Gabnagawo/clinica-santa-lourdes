@@ -15,20 +15,20 @@ não há etapa de build.
 | `wrangler.jsonc` | Configuração da Cloudflare: publica só a pasta `public/` |
 | `skills-lock.json` | Skills do Claude Code usadas no desenvolvimento (não vai para o ar) |
 
-## Hospedagem: Cloudflare Workers (arquivos estáticos)
+## Hospedagem: Cloudflare Pages
 
-A Cloudflare publica o conteúdo de `public/` automaticamente a cada push na
-branch `main`.
+O site fica em https://clinicasantalourdes.pages.dev e é publicado com o
+Wrangler, a ferramenta de linha de comando da Cloudflare (precisa do Node.js 22
+ou mais novo). Na pasta do projeto:
 
-Configuração inicial (uma vez só) no painel da Cloudflare:
+```sh
+npx wrangler login
+npx wrangler pages deploy
+```
 
-1. **Workers & Pages → Create application → Import a repository**.
-2. Conecte o GitHub e escolha o repositório `Gabnagawo/clinica-santa-lourdes`.
-3. Mantenha o nome do projeto `clinica-santa-lourdes`, que precisa ser igual
-   ao `name` do `wrangler.jsonc`. Deixe o *build command* vazio e o
-   *deploy command* como `npx wrangler deploy`.
-4. Clique em **Deploy**. O site fica disponível em
-   `https://clinica-santa-lourdes.<seu-subdominio>.workers.dev`.
+O `login` só é necessário na primeira vez. Na primeira publicação, o Wrangler
+pergunta se deve criar o projeto (escolha **Create a new project**) e qual é a
+branch de produção (aperte Enter para aceitar a sugestão).
 
 ### Domínio próprio
 
@@ -37,14 +37,14 @@ Configuração inicial (uma vez só) no painel da Cloudflare:
    apontam para a Netlify (A `75.2.60.5` ou CNAME `*.netlify.app`).
 2. No registrador (ex.: Registro.br), troque os nameservers pelos dois que a
    Cloudflare indicar.
-3. No projeto do site: **Settings → Domains & Routes → Add → Custom domain**,
-   uma vez para o domínio e outra para o `www`.
+3. No painel, em **Workers & Pages → clinicasantalourdes → Custom domains →
+   Set up a custom domain**, adicione o domínio e depois o `www`.
 4. Quando o site abrir pela Cloudflare, remova o domínio do site na Netlify.
 
 ## Testar localmente
 
 ```sh
-npx wrangler dev
+npx wrangler pages dev
 ```
 
-O site abre em http://localhost:8787, já com os cabeçalhos do `_headers`.
+O site abre em http://localhost:8788, já com os cabeçalhos do `_headers`.
