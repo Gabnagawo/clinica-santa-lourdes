@@ -1,0 +1,10 @@
+{
+  // Site 100% estático: a Cloudflare só serve os arquivos da pasta public/
+  // (não há código de servidor). O public/_headers define os cabeçalhos de
+  // segurança, no mesmo formato que era usado na Netlify.
+  "name": "clinica-santa-lourdes",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./public"
+  }
+}

@@ -1,0 +1,9 @@
+# Wrangler / Node
+node_modules/
+.wrangler/
+.dev.vars*
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
